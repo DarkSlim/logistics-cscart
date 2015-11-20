@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<addon scheme="2.0" edition_type="ROOT,ULT:VENDOR">
+	<id>qwintry</id>
+	<name>Qwintry Air</name>
+	<description></description>
+	<version>1.0</version>
+	<priority>4294967294</priority>
+	<position>0</position>
+	<status>active</status>
+	<default_language>EN</default_language>
+	<auto_install>COMMUNITY,PROFESSIONAL,MULTIVENDOR,ULTIMATE</auto_install>
+	<language_variables>
+		<item lang="EN" id="qwintry_air">Qwintry Air</item>
+		<item lang="EN" id="carrier_qwintry">Qwintry Air</item>
+		<item lang="EN" id="qwintry_mode">Mode</item>
+		<item lang="EN" id="qwintry_hub">Hub</item>
+		<item lang="EN" id="qwintry_default_shipment_weight">Default shipment weight (for products with zero weight)</item>
+		<item lang="EN" id="qwintry_courier">Courier</item>
+		<item lang="EN" id="qwintry_pickup">Pickup</item>
+		<item lang="EN" id="qwintry_view_all_points">View all pickup points on map here</item>
+		<item lang="EN" id="qwintry_customs_limit">Customs limit:</item>
+		<item lang="EN" id="qwintry_customs_limit_details"></item>
+		<item lang="EN" id="qwintry_lazy_workflow"></item>
+		<item lang="EN" id="qwintry_info"></item>
+		<item lang="EN" id="qwintry_time">Delivery time:</item>
+		<item lang="EN" id="qwintry_pickup_point">Pickup point</item>
+		<item lang="EN" id="qwintry_create_shipment">Create shipment in Qwintry Air</item>
+		<item lang="EN" id="qwintry_box_sizes">Box sizes</item>
+		<item lang="EN" id="qwintry_download_label_pdf">Download label (PDF)</item>
+    </language_variables>
+	<functions>
+		<item for="install">fn_qwintry_create_shipping_service</item>
+		<item for="uninstall">fn_qwintry_remove_shipping_service</item>
+	</functions>
+</addon>
