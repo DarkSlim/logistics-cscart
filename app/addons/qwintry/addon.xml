@@ -27,6 +27,18 @@
 		<item lang="EN" id="qwintry_create_shipment">Create shipment in Qwintry Air</item>
 		<item lang="EN" id="qwintry_box_sizes">Box sizes</item>
 		<item lang="EN" id="qwintry_download_label_pdf">Download label (PDF)</item>
+		<item lang="EN" id="qwintry_instructions">Instructions</item>
+		<item lang="EN" id="qwintry_instructions_content">1. Sign up on http://logistics.qwintry.com/signup , get api key from your profile page
+			2. Put api key to addon settings
+			3. Create shipments and attach labels to shipments
+			4. Put all the shipments into Preship container (bigger box) and send them to:
+			[company_name]
+			825 Dawson Dr
+			Qwintry Suite 12-109058
+			Newark, DE 19712-0825
+			Phone 858-633-6353
+			5. Use logistics.qwintry.com control panel to attach preship tracking
+			*Feel free to call us +1-844-QWINTRY or send your questions to logistics@qwintry.com and we will be happy to assist!*</item>
     </language_variables>
 	<functions>
 		<item for="install">fn_qwintry_create_shipping_service</item>

@@ -1,4 +1,13 @@
 <fieldset>
+{include file="common/subheader.tpl" title=__("qwintry_instructions")}
+<p class="qwintry-instructions">
+    {if $runtime.company_id > 0}
+        {assign var="company_id" value=$runtime.company_id}
+    {else}
+        {assign var="company_id" value=""|fn_get_default_company_id}
+    {/if}
+    {__("qwintry_instructions_content", ['[company_name]' => fn_get_company_name($company_id)])|nl2br}
+</p>
 
 {include file="common/subheader.tpl" title=__("general_info")}
 

@@ -25,7 +25,9 @@
 
         {assign var="country_data" value=$cart.user_data.s_country|fn_qwintry_get_country_data:$shipping.shipping_id}
         {foreach from=$country_data item="data"}
+            {if $data.bold}<b>{/if}
             {$data.header} {$data.content}<br />
+            {if $data.bold}</b>{/if}
         {/foreach}
     {/if}
 {elseif $display == "select"}

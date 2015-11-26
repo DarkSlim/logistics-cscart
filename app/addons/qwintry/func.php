@@ -40,8 +40,6 @@ function fn_qwintry_create_shipment($order_info){
         'Shipment' => array (
             'first_name' => $order_info['s_firstname'],
             'last_name' => $order_info['s_lastname'],
-            'passport_number' => '4444 123123', //tmp
-            'passport_issue_date' => '27.09.2010', //tmp
             'phone' => empty($order_info['s_phone']) ? $order_info['phone'] : $order_info['s_phone'],
             'email' => $order_info['email'],
             'customer_notes' => $order_info['notes'],
@@ -59,14 +57,15 @@ function fn_qwintry_create_shipment($order_info){
         ),
     );
 
+    $data['Shipment']['addr_line1'] = $order_info['s_address'];
+    $data['Shipment']['addr_line2'] = $order_info['s_address_2'];
+    $data['Shipment']['addr_zip'] = $order_info['s_zipcode'];
+    $data['Shipment']['addr_state'] = fn_get_state_name($order_info['s_state'], $order_info['s_country']);
+    $data['Shipment']['addr_city'] = $order_info['s_city'];
+    $data['Shipment']['addr_country'] = $order_info['s_country'];
+
     if(empty($shipping['extra']['type']) || $shipping['extra']['type'] == 'courier'){
         $data['Shipment']['delivery_type'] = 'courier';
-        $data['Shipment']['addr_line1'] = $order_info['s_address'];
-        $data['Shipment']['addr_line2'] = $order_info['s_address_2'];
-        $data['Shipment']['addr_zip'] = $order_info['s_zipcode'];
-        $data['Shipment']['addr_state'] = fn_get_state_name($order_info['s_state'], $order_info['s_country']);
-        $data['Shipment']['addr_city'] = $order_info['s_city'];
-        $data['Shipment']['addr_country'] = $order_info['s_country'];
     } elseif($shipping['extra']['type'] == 'pickup' && !empty($shipping['extra']['point'])){
         $data['Shipment']['delivery_type'] = 'pickup';
         $data['Shipment']['delivery_pickup'] = $shipping['extra']['point'];
@@ -302,6 +301,7 @@ function fn_qwintry_get_address_by_pickup_point($pickup_point, $shipping_id){
     $result = fn_qwintry_send_api_request('locations-list', array(), fn_get_shipping_params($shipping_id));
     if(!$result && !$result->success && empty($result->result)) return false;
     foreach($result->result as $city_name => $city){
+        if(empty($city->pickup_points)) continue;
         foreach($city->pickup_points as $code => $point){
             if($code == $pickup_point) return (string) $city_name . '. ' . (string) $point->addr;
         }
@@ -315,9 +315,11 @@ function fn_qwintry_get_country_data($country, $shipping_id){
     if(!$result && !$result->success && empty($result->result) && empty($result->result->{$country})) return false;
     foreach($result->result->{$country} as $key => $row){
         if (empty($row) || !is_string($row)) continue;
+
         $data[] = array(
             'header' => __('qwintry_' . $key),
-            'content' => $row
+            'content' => $row,
+            'bold' => in_array($key, array('lazy_workflow'))
         );
     }
     return empty($data) ? false : $data;
