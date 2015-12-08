@@ -28,6 +28,7 @@
 		<item lang="EN" id="qwintry_box_sizes">Box sizes</item>
 		<item lang="EN" id="qwintry_download_label_pdf">Download label (PDF)</item>
 		<item lang="EN" id="qwintry_instructions">Instructions</item>
+		<item lang="EN" id="qwintry_shipment_params">Shipment parameters</item>
 		<item lang="EN" id="qwintry_instructions_content">1. Sign up on http://logistics.qwintry.com/signup , get api key from your profile page
 			2. Put api key to addon settings
 			3. Create shipments and attach labels to shipments

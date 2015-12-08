@@ -20,7 +20,7 @@ function fn_qwintry_pre_place_order(&$cart, $allow, $product_groups)
     }
 }
 
-function fn_qwintry_create_shipment($order_info){
+function fn_qwintry_create_shipment($order_info, $qwintry_data = array()){
     $shipping = fn_qwintry_find_qwintry_shipping($order_info);
 
     if(empty($shipping)) return false;
@@ -35,6 +35,11 @@ function fn_qwintry_create_shipment($order_info){
     $weight_data = fn_expand_weight($package_info['W']);
 
     $pounds = $weight_data['pounds'];
+
+    if(!empty($qwintry_data['box_length']) && !empty($qwintry_data['box_width'])  && !empty($qwintry_data['box_height']))
+        $dimensions = $qwintry_data;
+
+    if(!empty($qwintry_data['box_weight'])) $pounds = $qwintry_data['box_weight'];
 
     $data = array (
         'Shipment' => array (

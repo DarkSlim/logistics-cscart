@@ -312,12 +312,6 @@
                                         <a href="{"orders.qwintry_download_label&order_id=`$order_info.order_id`"|fn_url}">{__("qwintry_download_label_pdf")}</a>
                                     </div>
                                 </div>
-                            {else}
-                                <div class="control-group">
-                                    <div class="center">
-                                        {include file="buttons/button.tpl" but_role="submit-link" but_href="{"orders.qwintry_create_shipment&order_id=`$order_info.order_id`"|fn_url}" but_text=__("qwintry_create_shipment")}
-                                    </div>
-                                </div>
                             {/if}
                         {/if}
                         {if $use_shipments}
