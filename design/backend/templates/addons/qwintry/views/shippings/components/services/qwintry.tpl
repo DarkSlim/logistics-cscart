@@ -11,6 +11,12 @@
 
 {include file="common/subheader.tpl" title=__("general_info")}
 
+
+{if isset($shipping.service_params.api_key)}
+    {assign var="is_lb" value=$smarty.request.shipping_id|fn_qwintry_check_measurement}
+    {if !$is_lb} <div class="alert alert-danger" role="alert">{__("qwintry_wrong_measurement")}</div> {/if}
+{/if}
+
 <div class="control-group">
     <label class="control-label" for="ship_qwintry_api_key">{__("api_key")}</label>
     <div class="controls">

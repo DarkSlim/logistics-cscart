@@ -40,7 +40,8 @@
 			Phone 858-633-6353
 			5. Use logistics.qwintry.com control panel to attach preship tracking
 			*Feel free to call us +1-844-QWINTRY or send your questions to logistics@qwintry.com and we will be happy to assist!*</item>
-    </language_variables>
+		<item lang="EN" id="qwintry_wrong_measurement">Incorrect weight measurement settings were detected in your Qwintry Logistics profile, please change this to pounds (LB) in your http://logistics.qwintry.com account!</item>
+	</language_variables>
 	<functions>
 		<item for="install">fn_qwintry_create_shipping_service</item>
 		<item for="uninstall">fn_qwintry_remove_shipping_service</item>

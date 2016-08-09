@@ -286,6 +286,12 @@ function fn_qwintry_get_hubs($shipping_id){
     return empty($hubs) ? false : $hubs;
 }
 
+function fn_qwintry_check_measurement($shipping_id){
+    $result = fn_qwintry_send_api_request('profile', array(), fn_get_shipping_params($shipping_id));
+    if(!$result && !$result->success && empty($result->results)) return false;
+    return $result->data->weight_measurement == 'kg' ? false : true;
+}
+
 function fn_qwintry_get_pickup_points($country, $shipping_id){
     $result = fn_qwintry_send_api_request('locations-list', array(), fn_get_shipping_params($shipping_id));
     if(!$result && !$result->success && empty($result->result)) return false;
